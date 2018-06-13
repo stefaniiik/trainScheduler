@@ -1,0 +1,9 @@
+body {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20px;
+}
+#jumbotron {
+    background-color: #154360;
+    color: white;
+}
