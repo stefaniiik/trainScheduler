@@ -57,4 +57,30 @@ $("#addTrainBtn").on("click", function() {
         return false;
     }
 
+    //subtracts the first train time back a year to ensure it's before current time.
+    var firstTrainConverted = moment(firstTrain, "hh:mm").subtract("1, years");
+    // the time difference between current time and the first train
+    var difference = currentTime.diff(moment(firstTrainConverted), "minutes");
+    var remainder = difference % frequency;
+    var minUntilTrain = frequency - remainder;
+    var nextTrain = moment().add(minUntilTrain, "minutes").format("hh:mm a");
+
+    var newTrain = {
+        name: trainName,
+        destination: destination,
+        firstTrain: firstTrain,
+        frequency: frequency,
+        min: minUntilTrain,
+        next: nextTrain
+    }
+
+    console.log(newTrain);
+    database.ref().push(newTrain);
+
+    $("#trainNameInput").val("");
+    $("#destinationInput").val("");
+    $("#firstInput").val("");
+    $("#frequencyInput").val("");
+
+    return false;
 });
