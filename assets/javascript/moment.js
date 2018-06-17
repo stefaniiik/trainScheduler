@@ -30,3 +30,31 @@ database.ref().on("value", function(snapshot) {
    
 
 });
+
+//grabs information from the form
+$("#addTrainBtn").on("click", function() {
+
+    var trainName = $("#trainNameInput").val().trim();
+    var destination = $("#destinationInput").val().trim();  
+    var firstTrain = $("#firstInput").val().trim();
+    var frequency = $("#frequencyInput").val().trim();
+
+    //ensures that each input has a value
+    if (trainName == "") {
+        alert('Enter a train name.');
+        return false;
+    }
+    if (destination == "") {
+        alert('Enter a destination.');
+        return false;
+    }
+    if (firstTrain == "") {
+        alert('Enter a first train time.');
+        return false;
+    }
+    if (frequency == "") {
+        alert('Enter a frequency');
+        return false;
+    }
+
+});
